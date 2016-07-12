@@ -1,0 +1,16 @@
+<head>
+    <title>We Blog</title>
+</head>
+<body>
+{% load staticfiles %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" type ="text/css" href="{% static 'feeds/stylesheet.css' %}"/>
+<div id="section">
+<h2 align="middle" style="font-family:Tahoma">Full Entry </h2>
+</div>
+{% for entry in entry %}
+    <p align="middle" style="font-family: 'Century Gothic'">Published on {{ entry.pub_date.year}}, {{ entry.pub_date.month }}, {{entry.pub_date.day }} .</p>
+    <h4 align="middle" style="font-family: Georgia">{{ entry.slug }}</h4>
+    <p style="font-family: Calibri">{{ entry.body }}</p>
+{% endfor %}
+</body>

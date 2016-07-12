@@ -1,0 +1,22 @@
+<html>
+<head><title>We blog</title>
+</head>
+<body>
+{% load staticfiles %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" type ="text/css" href="{% static 'feeds/stylesheet.css' %}"/>
+<div id="section" >
+<h1 align="middle">Posts</h1>
+</div>
+{% for entry in entry_list %}
+    <h2 style="color: black" align="middle">{{ entry.title }}</h2>
+    <p align="middle">Published on {{ entry.pub_date|date:"F j, Y" }}</p>
+    {% if entry.excerpt_html %}
+        <p>{{ entry.excerpt_html|safe }}</p>
+    {% else %}
+        {{ entry.body_html|truncatewords_html:"50"|safe }}
+    {% endif %}
+    <p align="middle"><a href="{{ entry.get_absolute_url }}">Read full entry</a></p>
+{% endfor %}
+</body>
+</html>
